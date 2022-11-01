@@ -1,0 +1,27 @@
+{
+  "name": "@img-comparison-slider/vue",
+  "version": "7.7.0",
+  "description": "Vue wrapper for img-comparison-slider",
+  "scripts": {
+    "build": "npm run clean && rollup -c",
+    "clean": "rm -rf dist"
+  },
+  "module": "./dist/index.esm.js",
+  "main": "./dist/index.umd.js",
+  "files": [
+    "dist/"
+  ],
+  "homepage": "https://img-comparison-slider.sneas.io",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sneas/img-comparison-slider.git"
+  },
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "img-comparison-slider": "~7.7.0"
+  }
+}

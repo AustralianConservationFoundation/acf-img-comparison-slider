@@ -1,0 +1,55 @@
+.main-slider {
+  --divider-color: #000;
+  --default-handle-color: #000;
+  --handle-position-start: 25%;
+
+  border-radius: 1rem 1rem 0 0;
+
+  .show-on-focus {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
+  }
+
+  &:focus {
+    outline: none;
+    .show-on-focus {
+      opacity: 1;
+    }
+  }
+}
+
+.another-slider {
+  transition: box-shadow 200ms ease-in-out;
+  outline: none;
+  &:focus {
+    box-shadow: 0px -5px 10px 5px $gray-400;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .fs-md-2 {
+    font-size: $h2-font-size;
+  }
+
+  .fs-md-5 {
+    font-size: $h5-font-size;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .fs-lg-3 {
+    font-size: $h3-font-size;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .fs-xl-2 {
+    font-size: $h2-font-size;
+  }
+}
+
+@include media-breakpoint-up(xxl) {
+  .fs-xxl-1 {
+    font-size: $h1-font-size;
+  }
+}

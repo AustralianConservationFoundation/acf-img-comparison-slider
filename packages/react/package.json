@@ -1,0 +1,29 @@
+{
+  "name": "@img-comparison-slider/react",
+  "version": "7.8.0",
+  "description": "React wrapper for img-comparison-slider",
+  "homepage": "https://img-comparison-slider.sneas.io",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sneas/img-comparison-slider.git"
+  },
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rimraf dist",
+    "compile": "tsc",
+    "watch": "tsc --watch",
+    "tsc": "tsc -p ."
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "img-comparison-slider": "~7.7.0"
+  }
+}
