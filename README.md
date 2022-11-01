@@ -1,0 +1,1 @@
+packages/img-comparison-slider/README.md
