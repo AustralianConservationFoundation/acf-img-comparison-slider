@@ -1,12 +1,12 @@
 import React, {
-  FC,
   AllHTMLAttributes,
-  PropsWithChildren,
   ChangeEventHandler,
+  FC,
+  PropsWithChildren,
 } from 'react';
 
 if (typeof document !== 'undefined') {
-  import('img-comparison-slider');
+  import('acf-img-comparison-slider');
 }
 
 type HTMLImgComparisonSliderElement = HTMLElement & {
