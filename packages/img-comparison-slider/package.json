@@ -1,6 +1,6 @@
 {
-  "name": "img-comparison-slider",
-  "version": "7.8.1",
+  "name": "acf-img-comparison-slider",
+  "version": "7.8.0",
   "description": "Slider component to compare images before and after",
   "homepage": "https://img-comparison-slider.sneas.io",
   "main": "dist/index.js",
@@ -23,7 +23,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sneas/img-comparison-slider.git"
+    "url": "https://github.com/AustralianConservationFoundation/acf-img-comparison-slider.git"
   },
   "devDependencies": {
     "mini-css-extract-plugin": "^2.6.1",
