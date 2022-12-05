@@ -1,8 +1,8 @@
-import styles from './styles.scss';
+import { RENDERED_CLASS, TABINDEX } from './defaults';
 import { inBetween } from './inBetween';
-import templateHtml from './template.html';
-import { TABINDEX, RENDERED_CLASS } from './defaults';
 import { isElementAffected } from './isElementAffected';
+import styles from './styles.scss';
+import templateHtml from './template.html';
 
 const templateElement = document.createElement('template');
 
@@ -42,6 +42,8 @@ export class HTMLImgComparisonSliderElement extends HTMLElement {
   private firstElement: HTMLElement;
   private secondElement: HTMLElement;
   private handleElement: HTMLElement;
+  private slidingPointElements: HTMLCollectionOf<Element>;
+  private squares: NodeListOf<Element>;
 
   private imageWidth: number;
   private imageHeight: number;
@@ -130,6 +132,9 @@ export class HTMLImgComparisonSliderElement extends HTMLElement {
     this.firstElement = shadowRoot.getElementById('first');
     this.secondElement = shadowRoot.getElementById('second');
     this.handleElement = shadowRoot.getElementById('handle');
+    this.slidingPointElements =
+      document.getElementsByClassName('sliding-point');
+    this.squares = shadowRoot.querySelectorAll('div.square');
   }
 
   private connectedCallback() {
@@ -165,8 +170,24 @@ export class HTMLImgComparisonSliderElement extends HTMLElement {
       passive: false,
     });
     this.addEventListener('touchend', this.onTouchEnd);
-    this.addEventListener('mousedown', this.onMouseDown);
-
+    // prevent sliding when click outside of specific elements
+    if (this.slidingPointElements?.length > 0) {
+      for (const element of this.slidingPointElements) {
+        element.addEventListener('mousedown', this.onMouseDown);
+      }
+    } else {
+      this.addEventListener('mousedown', this.onMouseDown);
+    }
+    if (this.squares?.length) {
+      for (const square of this.squares) {
+        const tickElement = this.shadowRoot.querySelector(
+          `div#${square.id}-tick`
+        );
+        square.addEventListener('click', (e) =>
+          this.onToggleSquare(e, tickElement)
+        );
+      }
+    }
     this.handle = this.hasAttribute('handle');
 
     this.hover = this.hasAttribute('hover')
@@ -208,6 +229,17 @@ export class HTMLImgComparisonSliderElement extends HTMLElement {
 
     if (name === 'keyboard') {
       this.keyboard = newValue === 'disabled' ? 'disabled' : 'enabled';
+    }
+  }
+
+  private onToggleSquare(e, tickElement) {
+    e.target.classList.add('active-square');
+    if (tickElement.classList.contains('tick-activate')) {
+      tickElement.classList.remove('tick-activate');
+      tickElement.classList.add('tick-deactivate');
+    } else {
+      tickElement.classList.add('tick-activate');
+      tickElement.classList.remove('tick-deactivate');
     }
   }
 
